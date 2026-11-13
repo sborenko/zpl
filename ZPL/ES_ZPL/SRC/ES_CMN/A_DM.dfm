@@ -905,8 +905,7 @@ object Form_Dm: TForm_Dm
     DatabaseName = 'EsDbOK'
     LoginPrompt = False
     Params.Strings = (
-      'USER NAME=buch'
-      'PASSWORD=buch2008')
+      'USER NAME=buch')
     SessionName = 'Default'
     Left = 24
     Top = 136
