@@ -1,0 +1,43 @@
+SET TERM ^ ;
+
+CREATE OR ALTER PROCEDURE ADD_NON_PPS_RECALC 
+as
+declare variable tabn integer;
+declare variable kdsps integer;
+declare variable kdobj integer;
+declare variable kdkatp integer;
+declare variable kdspz integer;
+begin
+  for select tabn, kdsps, kdobj, kdkatp, kdspz
+    from z_pere p 
+    where kdkatp = 2 
+      and dt_beg between '01/01/2026' and '01/31/2026'
+      and tabn in (
+        12578, 51061, 10238, 1451, 1509, 17287, 49165, 421, 12670, 4929,
+        11608, 1541, 10952, 832, 5207, 2908, 3423, 11960, 7383, 8514,
+        10039, 11277, 5671, 6091, 1047, 6936, 5826, 6822, 9260, 6460, 
+        12206, 10103, 12199, 9969, 10156, 9937, 10590
+      )
+  into 
+    :tabn, :kdsps, :kdobj, :kdkatp, :kdspz
+  do begin
+    insert into z_otkl 
+      (
+        dtproc, zamesgod, vidn, 
+        tabn, kdsps, kdobj, kdkatp, kdspz
+      ) 
+    values 
+      (
+        '02/01/2026', '01/01/2026', '8801', 
+        :tabn, :kdsps, :kdobj, :kdkatp, :kdspz
+      );
+  end
+end^
+
+SET TERM ; ^
+
+GRANT SELECT ON Z_PERE TO PROCEDURE ADD_NON_PPS_RECALC;
+
+GRANT INSERT ON Z_OTKL TO PROCEDURE ADD_NON_PPS_RECALC;
+
+GRANT EXECUTE ON PROCEDURE ADD_NON_PPS_RECALC TO SYSDBA;

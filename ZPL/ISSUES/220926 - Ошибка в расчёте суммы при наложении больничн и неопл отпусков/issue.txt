@@ -1,0 +1,19 @@
+Оксана:
+
+Таб.№ 12029
+26.08.22 - и неопл. отп и больничн.
+
+Исправление в z_rs5:
+
+            if Days <> 0 then
+              // Issue 220926 <<<
+              // Commented:
+              // nSumma := TNumUtils.RoundToKopeck(nSumma *
+              //   (dOtklDtE - dOtklDtB + 1) / Days)
+              // Replaced with:
+              nSumma := TNumUtils.RoundToKopeck(nSumma *
+                Days / (dOtklDtE - dOtklDtB + 1))
+              // Issue 220926 >>>
+
+
+Выполнен пересчёт всех подразделений.

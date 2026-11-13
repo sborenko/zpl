@@ -1,0 +1,1 @@
+arj u -r -x*.arj -x*.rar -x*.dcu -x*.ddp -x*.cds -x*.mb %1.arj

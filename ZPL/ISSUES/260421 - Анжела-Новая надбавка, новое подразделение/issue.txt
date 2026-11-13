@@ -1,0 +1,54 @@
+
+-- "Новое подразделение"
+
+INSERT INTO Z_KDOBJ (
+  NR, KDSPS, KDOBJ, KDOBJ_2, SHOBJ, NMOBJ, AINDX, PINDX, LVL, INDX, HSCH, SZATR, SBU, KDUPOS, KASSA, FIOUPOLN, KDSPZ, NR_GORD
+) 
+VALUES (
+  670, 1, 4005, NULL, 'Аттестация', 'Аттестационная комиссия', 301, 2, 1, 2, 'F', NULL, NULL, NULL, NULL, '', 999, ''
+);
+
+
+-- "Доступ"
+
+INSERT INTO ZZ_USROBJ (
+  NR, KDUSR, KDSPS, KDOBJ, DTBPROC, DTEPROC
+) 
+VALUES (
+  63, 113, 6, 4005, '1-APR-2026 00:00:00', NULL
+);
+
+
+-- "Вид начисления"
+
+
+INSERT INTO Z_KDVIDN (
+  NR, VIDN, OLDKDVIDN, SHVIDN, NMVIDN, AINDX, PINDX, LVL, INDX, HSCH, NDBE, NOSHOW, ZP13, OTP, BLN, DKR, OTPUSKN, BOLNIC, SPRM, CPRM, SSRK, DETI, DETIM, DETIK, DETIG, IND, DHD, OKLFND, CBUDG, SNDB, SPDN, SWSB, SPRF, SPENS, SALIM, CNDB, SSOCSTRAH, SBZR, LITTLEHLP, KDSPZ, OLDSZATR, SP_PF, SP_FSTVP, SP_FSNV, SP_FZ, SOVM, SPOV, KEKV, KDSCHDT, KDSCHKT
+) 
+VALUES (
+  295, '1433', NULL, 'За Аттестацию', 'За прохождение аттестации', 87, 3, 1, 24, 'F', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+);
+
+
+-----------------------------------------------
+
+select tabn from z_nadb where vidn = '1433' order by tabn
+
+-----------------------------------------------
+
+select count(*) from z_nadb where vidn = '1433'
+select count(*) from z_nadb where kdtemu = 2689
+select count(*) from z_nadb where kdspz = 2952
+
+-----------------------------------------------
+update z_nadb 
+set 
+  kdtemu = 2689, 
+  kdspz = 2952
+where
+  vidn = '1433'
+
+-----------------------------------------------
+
+-- 'Сделать сопоставление счетов для 1433 в мемориальных ордерах'
+-- 'Проставить счета для 1433 в плане счетов'

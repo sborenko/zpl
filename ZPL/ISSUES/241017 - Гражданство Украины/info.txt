@@ -1,0 +1,4 @@
+
+alter table z_upi add ukrcitiz char(1) default 'Y'
+
+update z_upi set ukrcitiz = 'Y' where tabn <> 12567

@@ -1,0 +1,149 @@
+
+При пересчёте больничных сбивается признак совместительства
+
+1. Найдены записи со сбившимся признаком
+
+select distinct tabn, nr
+...
+select distinct tabn
+from z_nu nn
+where
+  nn.zamesgod >= '1/1/2025'
+  and exists (
+    select 'x'
+    from z_nu n
+      join z_otkl o on o.spec_nr = n.spec_nr 
+        and o.zamesgod = n.zamesgod
+        and o.summa = -n.summa 
+    where 
+      n.nr = nn.nr
+      and n.zamesgod = nn.zamesgod
+      and n.vidn in ('2603', '2604', '2605', '2606')
+      and n.summa <> 0
+      and o.sovm = 'Y'
+)
+
+2. Признак восстановлен:
+
+update z_nu nn
+set sovm = 'Y'
+where
+  nn.zamesgod >= '1/1/2025'
+  and exists (
+    select 'x'
+    from z_nu n
+      join z_otkl o on o.spec_nr = n.spec_nr 
+        and o.zamesgod = n.zamesgod
+        and o.summa = -n.summa 
+    where 
+      n.nr = nn.nr
+      and n.zamesgod = nn.zamesgod
+      and n.vidn in ('2603', '2604', '2605', '2606')
+      and n.summa <> 0
+      and o.sovm = 'Y'
+)
+
+2. Изменён код z_Rs5:
+
+  В таблицы tblNU и tblSvRes добавлены поля совместительства NuSovm;
+  Небольшие изменения в коде.
+
+3. В ViNuMain добавлено поле совместительства из z_NU
+
+/*  View VINUMAIN  */
+CREATE or alter VIEW VINUMAIN (
+  TABN,
+  VIDN,
+  SHVIDN,
+  PSCH,
+  SCHBU,
+  DTPROC,
+  ZAMESGOD,
+  SUMMA,
+  DT_BEG,
+  DT_END,
+  CHAS,
+  NR,
+  KDSPS,
+  KDOBJ,
+  KDKATP,
+  KDSPZ,
+  PDN,
+  KDTEMU,
+  OZN_PILG,
+  NOTES,
+  PRR,
+  PRPV,
+  KTO,
+  PRKR,
+  MYNOTES,
+  SPECPS,
+  SPEC_NR,
+  DTVDPV,
+  NRVDPV,
+  KDBNK,
+  STORN,
+  NU_SOVM,
+  ZP13,
+  OTP,
+  BLN,
+  DKR,
+  OTPUSKN,
+  BOLNIC,
+  SPRM,
+  SSRK,
+  CPRM,
+  DETI,
+  DETIM,
+  DETIK,
+  DETIG,
+  IND,
+  DHD,
+  OKLFND,
+  CBUDG,
+  SNDB,
+  SPDN,
+  SWSB,
+  SPRF,
+  SPENS,
+  SALIM,
+  CNDB,
+  SSOCSTRAH,
+  SBZR,
+  SP_PF,
+  SP_FSTVP,
+  SP_FSNV,
+  SP_FZ,
+  SOVM,
+  SPOV,
+  NMSCH,
+  VID_KDSPZ,
+  VID_SPZ,
+  VID_KDSCHDT,
+  VID_SCHDT,
+  VID_KDSCHKT,
+  VID_SCHKT,
+  VID_KEKV,
+  NMTEMU,
+  LVL,
+  GRP,
+  NUSOVM
+) AS
+Select n.TABN, n.VIDN, v.ShVidN, s.PS_17,  
+       s.Sch_17, n.DTPROC, n.ZAMESGOD, n.SUMMA, n.DT_BEG, n.DT_END, n.CHAS,
+       n.NR,  n.KDSPS, n.KDOBJ, n.KDKATP, n.KDSPZ, n.PDN, n.KdTemu, n.Ozn_Pilg,
+       n.NOTES, n.PRR, n.PRPV, n.KTO, n.PRKR, n.MYNOTES, n.SPECPS, n.SPEC_NR,
+       n.DtVdPv, n.NrVdPv, n.KdBnk, n.STORN, n.Sovm,
+       v.ZP13, v.OTP, v.BLN, v.Dkr, v.OTPUSKN, v.BOLNIC, v.SPRM, v.SSrK, v.CPRM,
+       v.DETI, v.DETIM, v.DETIK, v.DETIG, v.IND, v.DHD, v.OKLFND, v.CBUDG,
+       v.SNDB, v.SPDN, v.SWSB, v.SPRF, v.SPENS, v.SALIM, v.CNDB, v.SSOCSTRAH,
+       v.SBZR, v.SP_PF, v.SP_FSTVP, v.SP_FSNV, v.SP_FZ, v.SOVM, v.SPOV, s.NmSch,
+       v.KdSpZ, s0.Sch_17, v.KdSchDt, s1.Sch_17, v.KdSchKt, s2.Sch_17, v.KEKV, 
+     t.NmSch, s.Lvl, n.Grp, n.Sovm
+from z_nu n
+  Left Outer Join Kd_SBU s on s.KdSch = n.KdSpZ
+  Left Outer Join z_KdVidN v on v.VidN = n.VidN
+  Left Outer Join Kd_SBU s0 on s0.KdSch = v.KdSpZ
+  Left Outer Join Kd_Sbu s1 on s1.KdSch = v.KdSchDt
+  Left Outer Join Kd_Sbu s2 on s2.KdSch = v.KdSchKt
+  Left Outer Join Kd_Temu t on t.KdTemu = n.KdTemu

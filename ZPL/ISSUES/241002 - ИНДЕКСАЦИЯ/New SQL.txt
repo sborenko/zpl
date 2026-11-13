@@ -1,0 +1,46 @@
+select TabN, 
+  u.Fam || ' ' || substring(u.Ima from 1 for 1) || '.' || substring(u.Otch from 1 for 1) n, 
+  'Erroneously indexed' 
+from z_sps s
+  left join z_UPI u on u.TabN = s.TabN
+  left join (
+    select TabN, ZaMesGod, Summa
+    from z_Otkl
+    where ZaMesGod = '08/01/2024'
+      and VidN = '1620'
+  ) o on o.TabN = s.TAbN
+where s.dtproc = '08/01/2024' 
+  and exists (
+    select 'x' 
+    from z_EmplIndxExcl
+    where TabN = s.TabN
+      and (DtBeg is null or DtBeg = "30-DEC-1899" or DtBeg <= '08/31/2024')
+      and (DtEnd is null or DtEnd = "30-DEC-1899" or DtEnd >= '08/01/2024')
+  )
+group by TabN, u.Fam || ' ' || substring(u.Ima from 1 for 1) || '.' || substring(u.Otch from 1 for 1),
+   'Erroneously indexed'
+having Round(Sum(o.Summa), 2) <> 0
+union
+select TabN, 
+  u.Fam || ' ' || substring(u.Ima from 1 for 1) || '.' || substring(u.Otch from 1 for 1) n, 
+  'Not indexed' 
+from z_sps s
+  left join z_UPI u on u.TabN = s.TabN
+  left join (
+    select TabN, ZaMesGod, Summa
+    from z_Otkl
+    where ZaMesGod = '08/01/2024'
+      and VidN = '1620'
+  ) o on o.TabN = s.TAbN
+where s.dtproc = '08/01/2024' 
+  and not exists (
+    select 'x' 
+    from z_EmplIndxExcl
+    where TabN = s.TabN
+      and (DtBeg is null or DtBeg = "30-DEC-1899" or DtBeg <= '08/31/2024')
+      and (DtEnd is null or DtEnd = "30-DEC-1899" or DtEnd >= '08/01/2024')
+  )
+group by TabN, u.Fam || ' ' || substring(u.Ima from 1 for 1) || '.' || substring(u.Otch from 1 for 1),
+   'Erroneously indexed'
+having Round(Sum(o.Summa), 2) = 0
+order by 3, 1

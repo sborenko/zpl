@@ -1,0 +1,12 @@
+Не попадал под сторнирование вид 5008, если пересекался с 5005.
+
+procedure TDataStorn500X.LoadOrigAndParts;
+...
+      with OrigCDS do begin
+        if Eof or not PeriodsAreIntersected(OtklPeriod, OrigPeriod)
+            // Было
+            // or (FieldByName('VidN').AsString <> PrevVidN) then begin
+            // Стало
+            or (VidN <> PrevVidN) then begin
+          Append;
+...

@@ -1,0 +1,177 @@
+TabN 5209: Different
+     Previous Total Sum: 15171.82
+     Current Total Sum : 15171.83
+TabN 6122: Different
+     Previous Rec Count: 5
+     Current Rec Count : 4
+TabN 10730: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 10740: Different
+     Previous Rec Count: 15
+     Current Rec Count : 14
+TabN 3993: Different
+     Previous Total Sum: 0
+     Current Total Sum : 3875.63
+     Previous Rec Count: 1
+     Current Rec Count : 7
+TabN 10538: Different
+     Previous Total Sum: 0
+     Current Total Sum : 3875.63
+     Previous Rec Count: 1
+     Current Rec Count : 6
+TabN 15281: Different
+     Previous Total Sum: 0
+     Current Total Sum : 3875.63
+     Previous Rec Count: 1
+     Current Rec Count : 6
+TabN 12141: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 7158: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 8330: Different
+     Previous Total Sum: 4032.25
+     Current Total Sum : 1213.61
+     Previous Rec Count: 17
+     Current Rec Count : 13
+TabN 6147: Different
+     Previous Total Sum: 8862.26
+     Current Total Sum : 8862.27
+TabN 11372: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 15075: Different
+     Previous Rec Count: 18
+     Current Rec Count : 17
+TabN 11780: Different
+     Previous Rec Count: 17
+     Current Rec Count : 13
+TabN 11986: Different
+     Previous Rec Count: 11
+     Current Rec Count : 13
+TabN 9606: Different
+     Previous Rec Count: 11
+     Current Rec Count : 13
+TabN 11246: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 11096: Different
+     Previous Rec Count: 4
+     Current Rec Count : 5
+TabN 9083: Different
+     Previous Rec Count: 8
+     Current Rec Count : 6
+TabN 10946: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 10752: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 3405: Different
+     Previous Rec Count: 6
+     Current Rec Count : 5
+TabN 11146: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 8793: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 12175: Different
+     Previous Total Sum: 0
+     Current Total Sum : 9259.12
+     Previous Rec Count: 2
+     Current Rec Count : 6
+TabN 10170: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 11574: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 4625: Different
+     Previous Total Sum: 17885.32
+     Current Total Sum : 8054.98
+     Previous Rec Count: 98
+     Current Rec Count : 16
+TabN 9725: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 10435: Different
+     Previous Rec Count: 3
+     Current Rec Count : 4
+TabN 4799: Different
+     Previous Total Sum: 24202.94
+     Current Total Sum : 24202.92
+TabN 11365: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 9050: Different
+     Previous Rec Count: 3
+     Current Rec Count : 4
+TabN 11756: Different
+     Previous Total Sum: 5921.02
+     Current Total Sum : 5147.06
+TabN 9310: Different
+     Previous Total Sum: 22408.95
+     Current Total Sum : 22223.88
+     Previous Rec Count: 12
+     Current Rec Count : 7
+TabN 8427: Different
+     Previous Rec Count: 1
+     Current Rec Count : 2
+TabN 11567: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 11500: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 12081: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 12121: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 11188: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 10651: Different
+     Previous Rec Count: 0
+     Current Rec Count : 1
+TabN 11497: Different
+     Previous Rec Count: 17
+     Current Rec Count : 16
+TabN 7130: Different
+     Previous Rec Count: 5
+     Current Rec Count : 6
+TabN 9047: Different
+     Previous Rec Count: 5
+     Current Rec Count : 4
+TabN 10385: Different
+     Previous Rec Count: 7
+     Current Rec Count : 6
+TabN 11316: Different
+     Previous Rec Count: 15
+     Current Rec Count : 17
+TabN 11489: Different
+     Previous Total Sum: 6838.83
+     Current Total Sum : 5167.5
+     Previous Rec Count: 15
+     Current Rec Count : 8
+TabN 8029: Different
+     Previous Total Sum: 6835
+     Current Total Sum : 1667.5
+     Previous Rec Count: 13
+     Current Rec Count : 7
+TabN 1002: Different
+     Previous Total Sum: 4735.52
+     Current Total Sum : 1117.76
+     Previous Rec Count: 14
+     Current Rec Count : 8
+TabN 34314: Different
+     Previous Total Sum: 4826.54
+     Current Total Sum : 1163.27
+     Previous Rec Count: 12
+     Current Rec Count : 7
+Total Entries Processed: 2172
+Identical Entries:       2121

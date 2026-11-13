@@ -1,0 +1,9 @@
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+select * from z_vOtp where tabn = 9924 and spec_nr = 1031746
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+update z_vOtp 
+set smsrdn = 236.32, 
+smotp = 6665.96 
+where tabn = 9924 and spec_nr = 1031746

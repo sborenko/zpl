@@ -1,0 +1,25 @@
+Оксана Бормотина:
+
+Т.н. 22004, Коновалов
+Неоплачиваемый отпуск с 17.08 по 31.08 перекрывается больничным с 19.08 по 01.09.
+Несмотря на отпуск, больничный за август насчитан. Это - неправильно. Должен быть насчитан только за 01.09.
+
+Исправлено в ObrOtkl z_rs5:
+            ...
+            Days := CalcBlnDaysForCurOtkl;
+
+            if Days <> 0 then
+              nSumma := TNumUtils.RoundToKopeck(nSumma *
+                (dOtklDtE - dOtklDtB + 1) / Days);
+            ...
+
+на 
+            ...
+            Days := CalcBlnDaysForCurOtkl;
+
+            if Days <> 0 then
+              nSumma := TNumUtils.RoundToKopeck(nSumma *
+                (dOtklDtE - dOtklDtB + 1) / Days)
+            else
+              nSumma := 0;
+            ...

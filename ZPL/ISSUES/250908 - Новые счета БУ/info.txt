@@ -1,0 +1,98 @@
+INSERT INTO Kd_SBU (
+  KdSch, KdPSch, SchBU, Sch_17, PSch, AIndx, Lvl, PS_17, NmSch,
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+)
+SELECT 
+  2922, KdPSch, SchBU, 
+  '7011/13', 
+  PSch, AIndx, Lvl, PS_17, 'Бюджетні асигнування (Ін.кошти спец.ф.-ЗДЗ у сфері освіти)',
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+FROM 
+  Kd_SBU
+WHERE 
+  KdSch = 2848
+
+--------------------------------------------------------------------------
+
+UPDATE Kd_SBU SET NmSch = 'Бюджетні асигнування (Ін.кошти спец.ф.-ЗДЗ у сфері освіти)'
+WHERE KdSch = 2922
+
+--------------------------------------------------------------------------
+
+INSERT INTO Kd_SBU (
+  KdSch, KdPSch, SchBU, Sch_17, PSch, AIndx, Lvl, PS_17, NmSch,
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+)
+SELECT 
+  2921, KdPSch, SchBU, 
+  '8013/13', 
+  PSch, AIndx, Lvl, PS_17, 'Матеріальні витрати (Ін.кошти спец.ф.-ЗДЗ у сфері освіти)',
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+FROM 
+  Kd_SBU
+WHERE 
+  KdSch = 2847
+
+--------------------------------------------------------------------------
+
+UPDATE Kd_SBU SET NmSch = 'Матеріальні витрати (Ін.кошти спец.ф. - ЗДЗ у сфері освіти)'
+WHERE KdSch = 2921
+
+--------------------------------------------------------------------------
+
+INSERT INTO Kd_SBU (
+  KdSch, KdPSch, SchBU, Sch_17, PSch, AIndx, Lvl, PS_17, NmSch,
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+)
+SELECT 
+  2920, KdPSch, SchBU, 
+  '2313/00-13', 
+  PSch, AIndx, Lvl, PS_17, 'Реєстраційні рахунки (Ін.кошти спец.ф. - ЗДЗ у сфері освіти)',
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+FROM 
+  Kd_SBU
+WHERE 
+  KdSch = 2846
+
+--------------------------------------------------------------------------
+
+UPDATE Kd_SBU SET NmSch = 'Реєстраційні рахунки (Ін.кошти спец.ф. - ЗДЗ у сфері освіти)'
+WHERE KdSch = 2920
+
+--------------------------------------------------------------------------
+"И.Капина !!!"
+--------------------------------------------------------------------------
+select * from Kd_SBU where Sch_17 = '8014/11'
+--------------------------------------------------------------------------
+select max(KdSch) from Kd_SBU
+--------------------------------------------------------------------------
+
+INSERT INTO Kd_SBU (
+  KdSch, KdPSch, SchBU, Sch_17, PSch, AIndx, Lvl, PS_17, NmSch,
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+)
+SELECT 
+  2923, KdPSch, SchBU, 
+  '8014/13', 
+  PSch, AIndx, Lvl, PS_17, 'Амортизація (Ін.кошти спец.ф. - ЗДЗ у сфері освіти)',
+  PIndx, Indx, HSch, DopPrizn, OldSchet, Nr_Gord, Arc, GrantAccnt
+FROM 
+  Kd_SBU
+WHERE 
+  KdSch = 2871
+
+--------------------------------------------------------------------------
+
+UPDATE Kd_SBU SET NmSch = 'Реєстраційні рахунки (Ін.кошти спец.ф. - ЗДЗ у сфері освіти)'
+WHERE KdSch = 2920
+
+--------------------------------------------------------------------------
+
+select * from Kd_SBU where 
+  Sch_17 like '2313/00-11%'
+  or Sch_17 like '7011/11%'
+  or Sch_17 like '7011/13%'
+  or Sch_17 like '2313/00-13%'
+  or Sch_17 like '8013/11%'
+  or Sch_17 like '8013/13%'
+order by KdSch

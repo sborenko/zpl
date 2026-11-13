@@ -1,0 +1,7 @@
+alter table update_history drop AsOfDate
+-- alter table update_history drop Version
+-- alter table update_history drop Info
+
+-- alter table update_history add VerDate timestamp
+-- alter table update_history add VerNum varchar(32)
+-- alter table update_history add VerInfo varchar(255)

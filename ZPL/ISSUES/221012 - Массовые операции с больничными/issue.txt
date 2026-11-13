@@ -1,0 +1,28 @@
+Вынес печать реестра в отдельный модуль BlnRegistry.pas
+Полностью переработал.
+
+--------------------------------------------------------------------
+
+select dt_beg, dt_end, dtproc, vidn, summa, spec_nr
+from z_nu 
+where tabn = 504 and dtproc = '09/01/2022'
+  and vidn in ('2603', '2604')
+order by dt_beg, dtproc, vidn, spec_nr
+
+--------------------------------------------------------------------
+
+По таб.№ 7364 - Шаповал нужно удалить лишний больничный. Ни отклонений, ни нач./удерж. по нему нет. 
+Только создаёт лишнюю запись в реестре.
+
+-- select * from z_vbln where tabn = 7364 and dtbeg >= '08/01/2022' order by nr
+-- : ...
+-- : 996229
+-- : 996230
+select * from z_vbln where spec_nr = 996229
+-- select * from Z_RBln where Spec_NR = 996229
+-- select * from Z_RBln2 where Spec_NR = 996229
+-- select * from z_otkl where spec_nr = 996229
+-- : нет
+-- select * from z_nu where spec_nr = 996229
+-- : нет
+-- DELETE from z_vbln where spec_nr = 996229

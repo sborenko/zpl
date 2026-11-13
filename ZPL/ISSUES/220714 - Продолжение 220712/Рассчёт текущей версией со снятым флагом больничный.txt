@@ -1,0 +1,53 @@
+
+СРАВНЕНИЕ РЕЗУЛЬТАТОВ РАССЧЁТА ТЕКУЩЕЙ ВЕРСИЕЙ ОТ 14.07.2022 (Z220713H.ARJ) С ФЛАГОМ "БОЛЬНИЧНЫЙ" У ВИДА 5002 И БЕЗ ФЛАГА.
+
+TabN 6122: Different
+     Previous Rec Count: 5
+     Current Rec Count : 4
+TabN 8330: Different
+     Previous Total Sum: 4032.25          Давал оклад в больничный период.
+     Current Total Sum : 2388.04          ОК.
+     Previous Rec Count: 17
+     Current Rec Count : 16
+TabN 15075: Different
+     Previous Rec Count: 20
+     Current Rec Count : 17
+TabN 11780: Different
+     Previous Rec Count: 17
+     Current Rec Count : 13
+TabN 11986: Different
+     Previous Rec Count: 14
+     Current Rec Count : 13
+TabN 9606: Different
+     Previous Rec Count: 14
+     Current Rec Count : 13
+TabN 4625: Different
+     Previous Total Sum: 11343.39         Давал оклад в больничный период.
+     Current Total Sum : 8054.98          ОК.
+     Previous Rec Count: 20
+     Current Rec Count : 16
+TabN 9310: Different
+     Previous Total Sum: 22408.95         Давал оклад в декретный период.
+     Current Total Sum : 22223.88         ОК.
+     Previous Rec Count: 12
+     Current Rec Count : 7
+TabN 9047: Different
+     Previous Rec Count: 5
+     Current Rec Count : 4
+TabN 10385: Different
+     Previous Rec Count: 7
+     Current Rec Count : 6
+TabN 11489: Different
+     Previous Rec Count: 15
+     Current Rec Count : 14
+TabN 8029: Different
+     Previous Rec Count: 13
+     Current Rec Count : 12
+TabN 1002: Different
+     Previous Rec Count: 14
+     Current Rec Count : 13
+TabN 34314: Different
+     Previous Rec Count: 12
+     Current Rec Count : 11
+Total Entries Processed: 2172
+Identical Entries:       2158

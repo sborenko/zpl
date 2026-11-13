@@ -1,0 +1,2 @@
+Формирование содержимого расчётных листов вынесено в общие классы 
+PrtRaschList, RaschListExcel, RaschListText, RaschListCmn.

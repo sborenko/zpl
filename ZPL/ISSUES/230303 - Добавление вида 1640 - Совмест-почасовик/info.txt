@@ -1,0 +1,25 @@
+
+-- Сдвигаем AIndx, чтобы освободить место для новой записи
+--
+update z_KdVidN
+set AIndx = AIndx + 1
+where AIndx >= 90
+
+-- Добавляем новую запись с параметрами 1608
+--
+insert into z_KdVidN
+select * from z_KdVidN where VidN = '1608'
+
+-- Меняем параметры
+--
+update z_KdVidN
+set 
+  VidN = '1640', 
+  ShVidN = 'Погодин.Сумісн.', 
+  NmVidN = 'Погодинно сумісник', 
+  AIndx = 90, 
+  PIndx = 3, 
+  Lvl = 1, 
+  Indx = 28
+where
+  Nr = (select Max(Nr) from z_KdVidN)

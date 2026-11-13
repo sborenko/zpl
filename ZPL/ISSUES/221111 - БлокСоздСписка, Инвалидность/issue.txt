@@ -1,0 +1,31 @@
+Исправлена ошибка блокировки создания списка: блокировка перенесена из 
+TFormZpMain.CheckSpisokMes в TFormCreSps.sBtnCreSpsClick.
+
+//------------------------------------------------------------------------------
+procedure TFormCreSps.sBtnCreSpsClick(Sender: TObject);
+begin
+  sBtnCreSps.Enabled := false;
+
+  // Блокируем повторный запуск создания списка.
+  FormDMZ.LockCreSps;
+
+  // Формирование
+  CreNewSps(d_DtBegMes, d_DtEndMes);
+  AddDolgniki(d_DtBegMes);
+
+  // Снимаем блокировку повторного запуска.
+  FormDMZ.UnlockCreSps;
+
+  bBtnCancel.Caption := 'Выход';
+end;
+
+
+********************************************************************************
+
+Добавить поле InvGroup integer в таблицу документов об инвалидности z_InvDocs
+
+ALTER TABLE z_InvDocs ADD InvGroup integer default 1;
+
+Сделать поле Группа инвалидности в перемещениях вычисляемым. Редактирование - 
+через диалог документов об инвалидности.
+

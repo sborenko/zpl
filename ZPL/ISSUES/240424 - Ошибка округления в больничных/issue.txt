@@ -1,0 +1,21 @@
+10445 Яричевская В.С.
+
+Больничный лист от 18.03.24
+Среднедневная 235.43
+Сумаа 1177.15
+
+Нажимаем кнопку Печать для печати справки,
+закрываем больничный и открываем вновь.
+
+Среднедневная 235.42
+Сумаа 1177.10
+
+Причина проблемы: функция округления RoundTo.
+
+Исправление:
+В функции class function TBlnUtils.CalcAverages округления
+      nSrDnOsn := RoundTo(nSumTtOsn / nDaysOsn, -2);
+      nSrDnSovm := RoundTo(nSumTtSovm / nDaysSovm, -2);
+заменены соответственно на 
+      nSrDnOsn := TNumUtils.RoundToKopeck(nSumTtOsn / nDaysOsn);
+      nSrDnSovm := TNumUtils.RoundToKopeck(nSumTtSovm / nDaysSovm);

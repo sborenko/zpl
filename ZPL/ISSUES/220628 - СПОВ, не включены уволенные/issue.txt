@@ -1,0 +1,37 @@
+Ошибка 20220628_001
+
+При формировании отчёта СПОВ пропускались уволенные сотрудники, кто не имел перемещений в квартале увольнения.
+Был ошибочно закоментирован вызов ProcessPrmUv. Раскомментирован, исправлен исходный код.
+
+Проверочные запросы:
+
+select count(*) 
+from z_PrmUv p 
+where Dt_Uvoln between '1/1/2022' and '3/31/2022'
+  and not exists (
+    select 'x' 
+    from z_Pere 
+    where TabN = p.TabN 
+		and Dt_Beg between '1/1/2022' and '3/31/2022'
+		and Is_Pere = 'Y'
+)
+    
+// 100 / 90
+SELECT COUNT(*) FROM curr_J0510506_21_3.dbf R WHERE NOT EXISTS (SELECT 'X' FROM orig_J0510507_21_3.dbf WHERE R.NUMIDENT = NUMIDENT)
+// 140 / 131
+SELECT COUNT(*) FROM curr_J0510506_21_4.dbf R WHERE NOT EXISTS (SELECT 'X' FROM orig_J0510507_21_4.dbf WHERE R.NUMIDENT = NUMIDENT)
+// 86 / 81
+SELECT COUNT(*) FROM curr_J0510506_22_1.dbf R WHERE NOT EXISTS (SELECT 'X' FROM orig_J0510507_22_1.dbf WHERE R.NUMIDENT = NUMIDENT)
+
+// 10
+SELECT * FROM curr_J0510506_21_3.dbf R WHERE EXISTS (SELECT 'X' FROM orig_J0510507_21_3.dbf WHERE R.NUMIDENT = NUMIDENT)
+// 9
+SELECT * FROM curr_J0510506_21_4.dbf R WHERE EXISTS (SELECT 'X' FROM orig_J0510507_21_4.dbf WHERE R.NUMIDENT = NUMIDENT)
+
+// 5
+2056423054
+3309311069
+2577801585
+2853108751
+2728412369
+SELECT * FROM curr_J0510506_22_1.dbf R WHERE EXISTS (SELECT 'X' FROM orig_J0510507_22_1.dbf WHERE R.NUMIDENT = NUMIDENT)

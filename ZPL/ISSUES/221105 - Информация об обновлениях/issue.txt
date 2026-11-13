@@ -1,0 +1,1 @@
+create table Update_History (AsOfDate timestamp, Version varchar(32), Info blob, constraint pk_update_history primary key (Version))

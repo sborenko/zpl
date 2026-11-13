@@ -1,0 +1,66 @@
+
+Печать справок о доходах для выехавших за рубеж.
+Печать > Справки > О доходах (для зарубеж.)
+
+Нужно добавить процедуру:
+
+CREATE PROCEDURE FOR_INCOMEINQABROAD (
+  EMPLID INTEGER,
+  DTBEG TIMESTAMP,
+  DTEND TIMESTAMP
+) RETURNS (
+  DTPROC TIMESTAMP,
+  SUMINCOME DOUBLE PRECISION,
+  SUMTAXES DOUBLE PRECISION,
+  SUMMILIT DOUBLE PRECISION,
+  SUMTRADEUN DOUBLE PRECISION,
+  SUMALIMONY DOUBLE PRECISION
+) AS BEGIN
+  for select DtProc
+    from z_Nu
+    where TabN = :EmplId 
+      and DtProc >= :DtBeg 
+      and DtProc <= :DtEnd
+      and VidN < '7000'
+    group by DtProc
+    into :DtProc
+  DO BEGIN
+    SumIncome = 0;
+    SumTaxes = 0;
+    SumMilit = 0;
+    SumTradeUn = 0;
+    SumAlimony = 0;
+
+    select Sum(Summa) 
+    from z_Nu
+    where TabN = :EmplId and DtProc = :DtProc 
+      and VidN < '2700' 
+    into :SumIncome;
+
+    select -Sum(Summa) 
+    from z_Nu
+    where TabN = :EmplId and DtProc = :DtProc 
+      and VidN in ('6001', '6002')
+    into :SumTaxes;
+    
+    select -Sum(Summa) 
+    from z_Nu
+    where TabN = :EmplId and DtProc = :DtProc 
+      and VidN = '6007'
+    into :SumMilit;
+    
+    select -Sum(Summa) 
+    from z_Nu
+    where TabN = :EmplId and DtProc = :DtProc 
+      and VidN = '6021'
+    into :SumTradeUn;
+    
+    select -Sum(Summa) 
+    from z_Nu
+    where TabN = :EmplId and DtProc = :DtProc 
+      and VidN in ('6601', '6602', '6611', '6612', '6647', '6707', '6717')
+    into :SumAlimony;
+
+    SUSPEND;
+  END
+END

@@ -1,0 +1,1 @@
+tar -czvf zpl.tar.gz -X tar-ignore.lst --recursion --ignore-case *.* WAR/ ZPL/

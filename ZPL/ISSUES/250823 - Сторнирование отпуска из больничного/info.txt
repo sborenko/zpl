@@ -1,0 +1,11 @@
+—торнирование отпуска, попадающего на несколько мес€цев позвол€етс€ только дл€ одного мес€ца, а должно работать дл€ всех.
+
+—оздаЄм отпуск на несколько мес€цев, корректируем даты, чтобы разрешить сторнирование
+
+select * from z_otkl where tabn = 12145 and vidn = '2404' and zamesgod > '01/01/2025'
+-- update z_otkl set dtproc = '07/01/2025' where tabn = 12145 and vidn = '2404' and zamesgod > '01/01/2025'
+-- select * from z_otkl where nr in (2506039, 2506040)
+-- update z_otkl set zamesgod = '07/01/2025' where nr = 2506039
+-- update z_otkl set zamesgod = '08/01/2025' where nr = 2506040
+-- update z_otkl set dt_beg = '07/15/2025', dt_end = '07/31/2025' where nr = 2506039
+-- update z_otkl set dt_beg = '08/01/2025', dt_end = '08/07/2025' where nr = 2506040

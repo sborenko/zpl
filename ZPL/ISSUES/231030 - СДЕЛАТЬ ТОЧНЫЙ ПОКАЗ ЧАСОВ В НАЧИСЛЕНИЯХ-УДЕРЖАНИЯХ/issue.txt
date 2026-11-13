@@ -1,0 +1,19 @@
+Сделать точный показ часов в начислениях/удержаниях
+
+
+Из TFormRs5.SaveSchetResults удаляем код:
+
+  ...
+          bVidOtpBlnCurMes := (tblSvResZaMesGod.AsDateTime = dDtProc) and
+                                 (((cVidN >= '2400') and (cVidN < '2500')) or
+                                      ((cVidN >= '2600') and (cVidN < '2700')));
+
+          if (nRecChas = 0) and (nRecSumma = 0)
+              and not bVidOtpBlnCurMes then begin
+            Next;
+            Continue;
+          end;
+  ...
+
+Провести пересчёт предприятия за несколько месяцев старой и новой версиями.
+Сравнить результаты. Может отличаться количество записей, но суммы должны остаться неизменными.

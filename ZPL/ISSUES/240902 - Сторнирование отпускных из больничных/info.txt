@@ -1,0 +1,9 @@
+Пересоздаём триггер:
+
+DROP TRIGGER ZOTKL_NR;
+
+CREATE TRIGGER ZOTKL_NR FOR Z_OTKL BEFORE INSERT POSITION 0 as 
+begin
+  if (New.Nr = NULL or New.Nr = 0) then
+    New.Nr = Gen_Id(Nr_ZOTKL, 1);
+end;

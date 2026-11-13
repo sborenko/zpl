@@ -1,0 +1,24 @@
+Индексация зарплаты. 
+1. Неправильно выбирался оклад из перемещений 
+в случае, если два перемещения были введены одной датой.
+Таб.№ 6492, Мозель.
+
+Изменена процедура
+TDMSpan.GetPereInfR(nTabN: integer; dRMes: TDateTime; var rPereInf: TPereInf);
+В запрос добавлена убывающая сортировка по Nr:
+    SQL.Add(
+      'select * ' +
+      'from z_pere p ' +
+      'where TabN = :TabN ' +
+        'and Dt_Beg = (' +
+          'select max(Dt_Beg) ' +
+          'from z_pere ' +
+          'where TabN = p.TabN ' +
+            'and Dt_Beg <= :Dt_Beg) ' +
+        'order by Nr desc'
+    );
+
+2. Проведена установка в перемещениях базового месяца 01.01.2024 для 
+сотрудников работавших на 01.01.2024. Использовалась утилита Indexation.
+См. ../UTILS/Indexation.
+Оригинальные (до изменения) записи перемещений хранятся в SavedBaseMnths.cds

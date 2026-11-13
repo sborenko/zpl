@@ -1,0 +1,21 @@
+
+-- яохянй оюйернб люяянбшу нрйкнмемхи
+select * 
+from z_VdPv 
+order by dtproc desc
+
+-- йнцн асдел лемърэ
+select KdSPZ, Sch_17 
+from z_otkl
+  left join kd_sbu on kdsch = kdspz
+where nrvdpv = -7179 
+
+-- лемъел
+update z_otkl
+  set kdspz = 1209
+where nrvdpv = -7179
+
+-- еы╗ пюг
+update z_otkl
+  set Notes = 'МЮЙ. 1166Й/24.09.25'
+where nrvdpv = -7179

@@ -1,0 +1,2 @@
+
+alter table z_Uderg add PriznDoh integer

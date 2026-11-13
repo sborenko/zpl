@@ -1,0 +1,145 @@
+------------------
+СПИСОК табельных номеров попадающих под раздачу
+------------------
+select * from z_upi
+where FAM in (
+  'ПОТРАПЕЛЮК', 'ГРАЧОВА', 'КОЦЮБА', 'СУГАК', 'РУТА', 'ФОРМАНЮК', 
+  'РУТА', 'АЛЬШИНА', 'БУРМІСТРОВА', 'ТАЛДА', 'ТАРТАК', 'ФОРМАНЮК', 'ГАЙСА', 'ТАРТАК', 'КАН',
+  'БАБЕНКО', 'НАЗАРОВА', 
+  'ЛИСЬ', 
+  'КОКІДЬКО', 
+  'ФУРМАН',
+  'ФРОЛОВ',
+  'СТЕПАНЮК'
+)
+ORDER BY FAM
+
+------------------
+СПИСОК 1 развёрнутый
+------------------
+select n.tabn, u.fam, n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '12/01/2025'
+  and tabn in (
+    1509, -- потрапелюк
+    17287, -- грачова
+    49165, -- коцюба
+    421, -- сугак
+    8392, -- рута
+    10816 -- форманюк
+  )
+  and n.vidn < '2700' -- начисления
+  and n.vidn <> '2604' -- больничные не 5-ти дневка
+  and n.kdobj = 1002 -- учебно-методический отдел
+  and n.kdspz = 1209 -- бюджет (8011/б)
+group by n.tabn, u.fam, n.vidn, v.nmvidn
+order by tabn, vidn
+
+------------------
+СПИСОК 1 свёрнутый
+------------------
+
+select n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '12/01/2025'
+  and tabn in (
+    1509, -- потрапелюк
+    17287, -- грачова
+    49165, -- коцюба
+    421, -- сугак
+    8392, -- рута
+    10816 -- форманюк
+  )
+  and n.vidn < '2700' -- начисления
+  and n.vidn <> '2604' -- больничные не 5-ти дневка
+  and n.kdobj = 1002 -- учебно-методический отдел
+  and n.kdspz = 1209 -- бюджет (8011/б)
+group by n.vidn, v.nmvidn
+order by n.vidn
+
+------------------
+СПИСОК 2 развёрнутый
+------------------
+select n.tabn, u.fam, n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '10/01/2025'
+  and tabn in (
+    4487, -- альшина
+    5658, -- бурмистрова
+    5820, -- назарова
+    6028, -- гайса
+    6526, -- лись
+    6998, -- кокидько
+    8392, -- рута
+    9925, -- бабенко
+    10816, -- форманюк
+    11152, -- кан
+    11414, -- тартак
+    11535, -- фролов
+    12078, -- фурман
+    28490, -- талда
+    47458  -- степанюк
+  )
+  and n.vidn < '2700' -- начисления
+  and n.vidn <> '2604' -- больничные не 5-ти дневка
+  and n.kdspz = 1209 -- бюджет (8011/б)
+  and not (
+    tabn in (
+      5820, -- назарова
+      6998 -- кокидько
+    )
+    and vidn in (
+      '1419', '1609', '2411'
+    )
+  )
+group by n.tabn, u.fam, n.vidn, v.nmvidn
+order by tabn, vidn
+
+------------------
+СПИСОК 2 свёрнутый
+------------------
+select n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '10/01/2025'
+  and n.tabn in (
+    4487, -- альшина
+    5658, -- бурмистрова
+    5820, -- назарова
+    6028, -- гайса
+    6526, -- лись
+    6998, -- кокидько
+    8392, -- рута
+    9925, -- бабенко
+    10816, -- форманюк
+    11152, -- кан
+    11414, -- тартак
+    11535, -- фролов
+    12078, -- фурман
+    28490, -- талда
+    47458  -- степанюк
+  )
+  and n.vidn < '2700' -- начисления
+  and n.vidn <> '2604' -- больничные не 5-ти дневка
+  and n.kdspz = 1209 -- бюджет (8011/б)
+  and not (
+    n.tabn in (
+      5820, -- назарова
+      6998 -- кокидько
+    )
+    and n.vidn in (
+      '1419', '1609', '2411'
+    )
+  )
+group by n.vidn, v.nmvidn
+order by n.vidn

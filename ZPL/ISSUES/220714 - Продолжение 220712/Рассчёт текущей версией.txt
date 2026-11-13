@@ -1,0 +1,82 @@
+
+СРАВНЕНИЕ РЕЗУЛЬТАТОВ РАССЧЁТА ТЕКУЩЕЙ ВЕРСИЕЙ ОТ 14.07.2022 (Z220713H.ARJ) С РЕЗУЛЬТАТАМИ 05.06.2022 (Z220506P.ARJ)
+
+TabN 6122: Different
+     Previous Rec Count: 4
+     Current Rec Count : 5
+TabN 10740: Different
+     Previous Rec Count: 14
+     Current Rec Count : 15
+TabN 8330: Different
+     Previous Total Sum: 1213.61          
+     Current Total Sum : 4032.25          Даёт оклад в больничный период. Проблема должна уйти со снятием признака "больничный" с вида 5002 - невыясненная причина.
+     Previous Rec Count: 13
+     Current Rec Count : 17
+TabN 15075: Different
+     Previous Rec Count: 17
+     Current Rec Count : 20
+TabN 11780: Different
+     Previous Rec Count: 13
+     Current Rec Count : 17
+TabN 11986: Different
+     Previous Rec Count: 13
+     Current Rec Count : 14
+TabN 9606: Different
+     Previous Rec Count: 13
+     Current Rec Count : 14
+TabN 9083: Different
+     Previous Rec Count: 6
+     Current Rec Count : 8
+TabN 3405: Different
+     Previous Rec Count: 5
+     Current Rec Count : 6
+TabN 4625: Different
+     Previous Total Sum: 8054.98          
+     Current Total Sum : 11343.39         Даёт оклад в больничный период. Проблема должна уйти со снятием признака "больничный" с вида 5002 - невыясненная причина.
+     Previous Rec Count: 16
+     Current Rec Count : 20
+TabN 10435: Different
+     Previous Rec Count: 4
+     Current Rec Count : 3
+TabN 9050: Different
+     Previous Rec Count: 4
+     Current Rec Count : 3
+TabN 11756: Different
+     Previous Total Sum: 5147.06          Был неправильный рассчёт декретных в 07.2022
+     Current Total Sum : 5921.02          ОК.
+TabN 9310: Different
+     Previous Total Sum: 22223.88         
+     Current Total Sum : 22408.95         Даёт оклад в декретный период. Проблема должна уйти со снятием признака "больничный" с вида 5002 - невыясненная причина.
+     Previous Rec Count: 7
+     Current Rec Count : 12
+TabN 11497: Different
+     Previous Rec Count: 16
+     Current Rec Count : 17
+TabN 9047: Different
+     Previous Rec Count: 4
+     Current Rec Count : 5
+TabN 10385: Different
+     Previous Rec Count: 6
+     Current Rec Count : 7
+TabN 11489: Different
+     Previous Total Sum: 5167.5           Не видел сторнирования невыясненной причины, не давал оклад.
+     Current Total Sum : 6838.83          ОК.
+     Previous Rec Count: 8
+     Current Rec Count : 15
+TabN 8029: Different
+     Previous Total Sum: 1667.5           Не видел сторнирования невыясненной причины, не давал оклад.
+     Current Total Sum : 6835             ОК.
+     Previous Rec Count: 7
+     Current Rec Count : 13
+TabN 1002: Different
+     Previous Total Sum: 1117.76          Не видел сторнирования невыясненной причины, не давал оклад.
+     Current Total Sum : 4735.52          ОК.
+     Previous Rec Count: 8
+     Current Rec Count : 14
+TabN 34314: Different
+     Previous Total Sum: 1163.27          Не видел сторнирования невыясненной причины, не давал оклад.
+     Current Total Sum : 4826.54          ОК.
+     Previous Rec Count: 7
+     Current Rec Count : 12
+Total Entries Processed: 2172
+Identical Entries:       2151

@@ -1,0 +1,170 @@
+------------------
+СПИСОК табельных номеров попадающих под раздачу
+------------------
+select distinct TabN, Fam, Ima, Otch from z_upi
+where TabN in (
+--  12670,
+--  11608, 1541, 10952, 832, 5207, 2908, 3423, 11816,
+--  11960,
+--  7383, 8514, 10039, 11277, 5671,
+--  28797, 6091, 1047, 6936, 6489, 
+--  5826, 6822, 
+--  9260,
+--  6460, 12206, 10103, 12199, 9969, 10156, 9937,
+--  5500,
+--  10328,
+11176, 11053, 12404, 11687,
+0
+)
+ORDER BY FAM
+
+
+
+------------------
+СПИСОК 1 развёрнутый
+------------------
+select n.tabn, u.fam, n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '12/01/2025'
+  and tabn in (
+    12670,
+    11608, 1541, 10952, 832, 5207, 2908, 3423, 11816,
+    11960,
+    7383, 8514, 10039, 11277, 5671,
+    28797, 6091, 1047, 6936,
+    5826, 6822, 
+    9260,
+    6460, 12206, 10103, 12199, 9969, 10156, 9937
+   )
+  and n.vidn in (
+    '1412', '1414', '2406', '2404', '2405', '1810', '2214', 
+    '1601', '1003', '1401', '1423', '1620', '1407', '1408', '1409'
+  )
+  and (
+    select substring(sch_17 from 1 for 4) 
+    from kd_sbu 
+    where kdsch = n.kdspz
+  ) = '8111'
+group by n.tabn, u.fam, n.vidn, v.nmvidn
+order by u.fam, n.vidn
+
+------------------
+СПИСОК 1 свёрнутый
+------------------
+select n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '12/01/2025'
+  and tabn in (
+    12670,
+    11608, 1541, 10952, 832, 5207, 2908, 3423, 11816,
+    11960,
+    7383, 8514, 10039, 11277, 5671,
+    28797, 6091, 1047, 6936,
+    5826, 6822, 
+    9260,
+    6460, 12206, 10103, 12199, 9969, 10156, 9937
+  )
+  and n.vidn in (
+    '1412', '1414', '2406', '2404', '2405', '1810', '2214', 
+    '1601', '1003', '1401', '1423', '1620', '1407', '1408', '1409'
+  )
+  and (
+    select substring(sch_17 from 1 for 4) 
+    from kd_sbu 
+    where kdsch = n.kdspz
+  ) = '8111'
+group by n.vidn, v.nmvidn
+order by n.vidn
+
+------------------
+СПИСОК 2 развёрнутый
+------------------
+select n.tabn, u.fam, n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where (
+    n.tabn = 6489 and n.zamesgod between '01/01/2025' and '09/01/2025'
+    or n.tabn = 5500 and n.zamesgod between '01/01/2025' and '10/01/2025'
+    or n.tabn = 10328 and n.zamesgod between '01/01/2025' and '09/01/2025'
+  )
+  and n.vidn in (
+    '1412', '1414', '2406', '2404', '2405', '1810', '2214', 
+    '1601', '1003', '1401', '1423', '1620', '1407', '1408', '1409'
+  )
+  and (
+    select substring(sch_17 from 1 for 4) 
+    from kd_sbu 
+    where kdsch = n.kdspz
+  ) = '8111'
+group by n.tabn, u.fam, n.vidn, v.nmvidn
+order by u.fam, n.vidn
+
+------------------
+СПИСОК 2 свёрнутый
+------------------
+select n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where (
+    n.tabn = 6489 and n.zamesgod between '01/01/2025' and '09/01/2025'
+    or n.tabn = 5500 and n.zamesgod between '01/01/2025' and '10/01/2025'
+    or n.tabn = 10328 and n.zamesgod between '01/01/2025' and '09/01/2025'
+  )
+  and n.vidn in (
+    '1412', '1414', '2406', '2404', '2405', '1810', '2214', 
+    '1601', '1003', '1401', '1423', '1620', '1407', '1408', '1409'
+  )
+  and (
+    select substring(sch_17 from 1 for 4) 
+    from kd_sbu 
+    where kdsch = n.kdspz
+  ) = '8111'
+group by n.vidn, v.nmvidn
+order by n.vidn
+
+------------------
+СПИСОК 3 развёрнутый
+------------------
+select n.tabn, u.fam, n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '06/01/2025'
+  and n.tabn in (11176, 11053, 12404, 11687)
+  and n.vidn in ('1419', '1424', '1608', '2411')
+  and (
+    select substring(sch_17 from 1 for 4) 
+    from kd_sbu 
+    where kdsch = n.kdspz
+  ) = '8111'
+group by n.tabn, u.fam, n.vidn, v.nmvidn
+order by u.fam, n.vidn
+
+------------------
+СПИСОК 3 свёрнутый
+------------------
+select n.vidn, v.nmvidn, 
+  cast(sum(n.summa) as numeric(18, 2)) summa
+from z_nu n
+  left join z_upi u on u.tabn = n.tabn
+  left join z_kdvidn v on v.vidn = n.vidn
+where n.zamesgod between '01/01/2025' and '06/01/2025'
+  and n.tabn in (11176, 11053, 12404, 11687)
+  and n.vidn in ('1419', '1424', '1608', '2411')
+  and (
+    select substring(sch_17 from 1 for 4) 
+    from kd_sbu 
+    where kdsch = n.kdspz
+  ) = '8111'
+group by n.vidn, v.nmvidn
+order by n.vidn
